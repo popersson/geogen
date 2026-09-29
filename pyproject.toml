@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geogen"
+version = "0.1.0"
+description = "Seeded random geometry generators and basic geometry/mesh formats (geo2d)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Per-Olof Persson" }, { name = "Arjun Narayanan" }]
+dependencies = [
+    "numpy",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+fast = ["numba"]
+test = ["pytest"]
+
+[project.urls]
+Repository = "https://github.com/popersson/geogen"
+
+# `from geogen import geo2d`: the subpackages live under geogen/; tests and examples
+# live inside them as plain directories and are not shipped.
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["geogen*"]
+exclude = ["*.tests*", "*.examples*"]
